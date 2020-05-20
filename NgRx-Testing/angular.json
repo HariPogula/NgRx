@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "NgRx-Testing"
+    }
+  },
+  "defaultProject": "NgRx-Testing",
+  "cli": {
+    "analytics": false
+  }
 }
