@@ -1,0 +1,33 @@
+<div class="row cardHeader">
+  <button
+    pButton
+    type="button"
+    label="Beginner"
+    class="ui-button-primary"
+    (click)="showBeginerCourses()"
+  ></button>
+  &nbsp;&nbsp;&nbsp;
+  <button
+    pButton
+    type="button"
+    label="Advanced"
+    class="ui-button-warning"
+    (click)="showAdvancedCourses()"
+  ></button>
+</div>
+<app-message></app-message>
+
+<app-loading></app-loading>
+
+<div class="container-fluid row" *ngIf="isDefault; else advanced">
+  <div class="col-md-3" *ngFor="let item of begineerCourses$ | async">
+    <app-course-card [course]="item"></app-course-card>
+  </div>
+</div>
+<ng-template #advanced>
+  <div class="container-fluid row">
+    <div class="col-md-3" *ngFor="let item of advancedCourses$ | async">
+      <app-course-card [course]="item"></app-course-card>
+    </div>
+  </div>
+</ng-template>
