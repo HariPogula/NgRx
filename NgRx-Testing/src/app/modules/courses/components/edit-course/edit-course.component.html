@@ -1,1 +1,47 @@
-<p>edit-course works!</p>
+<p-dialog
+  header="Godfather I"
+  [(visible)]="display"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [maximizable]="true"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+  (onHide)="onClose()"
+>
+  <div>
+    <label>Description: </label> &nbsp;
+    <input type="text" pInputText />
+  </div>
+
+  <div>
+    <label>Long Description: </label> &nbsp;
+    <textarea pInputTextarea placeholder="Long Description"> </textarea>
+  </div>
+  <div>
+    <label>Calendar: </label>
+    <p-calendar [showIcon]="true"></p-calendar>
+  </div>
+  <div>
+    <label>Course type:</label>
+    <p-dropdown [options]="courseTypes" optionLabel="name"></p-dropdown>
+  </div>
+
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-check"
+      (click)="onClose()"
+      label="Yes"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-times"
+      (click)="onClose()"
+      label="No"
+      class="ui-button-secondary"
+    ></button>
+  </p-footer>
+</p-dialog>

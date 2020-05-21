@@ -1,1 +1,37 @@
-<p>course-card works!</p>
+<p-card
+  header="{{ course.description }}"
+  subheader="Price:{{ course.price }}"
+  class="card"
+  styleClass="ui-card-shadow"
+>
+  <p-header>
+    <img src="Card" [src]="course.iconUrl" />
+  </p-header>
+  <div>
+    <p>{{ course.longDescription }}</p>
+  </div>
+  <p-footer>
+    <button
+      pButton
+      type="button"
+      label="View"
+      icon="pi pi-search"
+      class="ui-button-rounded ui-button-primary"
+      style="margin-right: 0.25em;"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="Edit"
+      icon="pi pi-user-edit"
+      (click)="editCourse(course)"
+      class="ui-button-rounded ui-button-danger"
+    ></button>
+  </p-footer>
+</p-card>
+
+<app-edit-course
+  [display]="display"
+  [course]="course"
+  (displayChange)="onDialogClose($event)"
+></app-edit-course>

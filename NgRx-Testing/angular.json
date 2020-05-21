@@ -127,6 +127,7 @@
   },
   "defaultProject": "NgRx-Testing",
   "cli": {
+    "defaultCollection": "@ngrx/schematics",
     "analytics": false
   }
 }
