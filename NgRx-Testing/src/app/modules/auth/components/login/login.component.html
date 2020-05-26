@@ -1,1 +1,9 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  Username: <input type="text" formControlName="username" pInputText /><br />
+  Password :<input type="text" formControlName="password" pInputText /><br />
+  <button
+    pButton
+    label="Success"
+    class="ui-button-raised ui-button-success"
+  ></button>
+</form>

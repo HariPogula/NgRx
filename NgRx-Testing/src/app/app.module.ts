@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import * as fromApp from './reducers';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { reducers } from './reducers/index';
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent],
@@ -25,7 +26,9 @@ import * as fromApp from './reducers';
     AppRoutingModule,
     PrimengModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
+    ReactiveFormsModule,
+    FormsModule,
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
