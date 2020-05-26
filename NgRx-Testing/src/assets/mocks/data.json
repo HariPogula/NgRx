@@ -162,5 +162,11 @@
       "url": "angular-material-course",
       "price": 50
     }
+  ],
+  "users": [
+    {
+      "username": "hari@gmail.com",
+      "password": "aaa"
+    }
   ]
 }
