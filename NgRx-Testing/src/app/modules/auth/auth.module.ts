@@ -6,6 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import * as fromAuth from './reducers';
 import { PrimengModule } from 'src/app/primeng/primeng.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth.effects';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -16,6 +18,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule,
     StoreModule.forFeature('auth', fromAuth.authReducer),
+    EffectsModule.forFeature([AuthEffects]),
   ],
+  providers: [],
 })
 export class AuthModule {}

@@ -24,7 +24,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link">About</a>
       </li>
 
       <li class="nav-item">
@@ -32,7 +32,18 @@
           class="nav-link"
           [routerLink]="['/auth']"
           routerLinkActive="router-link-active"
+          *ngIf="isLoggedOut$ | async"
           >Login</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link btn"
+          (click)="logout()"
+          *ngIf="isLoggedIn$ | async"
+          routerLinkActive="router-link-active"
+          >Logout</a
         >
       </li>
     </ul>
