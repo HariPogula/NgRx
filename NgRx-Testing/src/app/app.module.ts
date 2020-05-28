@@ -15,8 +15,9 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { reducers } from './reducers/index';
+import { reducers, metaReducers } from './reducers/index';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent],
@@ -29,12 +30,23 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictActionSerializability: true,
+        strictStateSerializability: true,
+      },
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router',
+      routerState: RouterState.Minimal,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

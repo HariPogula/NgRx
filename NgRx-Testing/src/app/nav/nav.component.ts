@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppState } from '../reducers';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { isLoggedIn, isLoggedOut } from '../modules/auth/auth.selectors';
-import { logout } from '../modules/auth/auth.actions';
+import { logout, login } from '../modules/auth/auth.actions';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,11 +18,15 @@ export class NavComponent implements OnInit {
   constructor(private store: Store<AppState>, private router: Router) {}
 
   ngOnInit(): void {
+    const userProfile = localStorage.getItem('user');
+    if (userProfile) {
+      this.store.dispatch(login({ user: JSON.parse(userProfile) }));
+    }
     // !! is used if the expression has value, it should be true otherwise false.
     // ! is to give opppisite value of expression.
 
     // this.isLoggedIn$ = this.store.pipe(map((state) => !!state['auth']?.user));
-    this.isLoggedIn$ = this.store.select(isLoggedIn);
+    this.isLoggedIn$ = this.store.pipe(select(isLoggedIn));
     this.isLoggedOut$ = this.store.select(isLoggedOut);
     // this.isLoggedOut$ = this.store.pipe(map((state) => !state['auth']?.user));
   }
