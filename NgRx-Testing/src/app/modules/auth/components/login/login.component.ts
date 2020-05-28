@@ -5,6 +5,7 @@ import { AppState } from 'src/app/reducers';
 import { AuthService } from '../../services/auth.service';
 import { tap } from 'rxjs/operators';
 import { login } from '../../auth.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
     console.log('Result is ' + JSON.stringify(result));
 
     this.store.dispatch(login({ user: result }));
+    this.router.navigate(['/course']);
     // this.authService.login(result).pipe(
     //   tap((u) => {
     //     console.log('Tap User is ' + u);
