@@ -31,7 +31,7 @@ export class AuthEffects {
   );
 
   constructor(private actions$: Actions, private router: Router) {
-    // login$.subscribe();
+    // login$ scribe();
     // OR
     // actions$.subscribe((action) => {
     //   if (action.type == '[Login Page] User login') {
