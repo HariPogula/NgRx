@@ -18,10 +18,6 @@ export class NavComponent implements OnInit {
   constructor(private store: Store<AppState>, private router: Router) {}
 
   ngOnInit(): void {
-    const userProfile = localStorage.getItem('user');
-    if (userProfile) {
-      this.store.dispatch(login({ user: JSON.parse(userProfile) }));
-    }
     // !! is used if the expression has value, it should be true otherwise false.
     // ! is to give opppisite value of expression.
 

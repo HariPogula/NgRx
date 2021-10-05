@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { reducers, metaReducers } from './reducers/index';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent],
@@ -30,6 +31,7 @@ import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    AuthModule, //for root is NOT required. We are eager loading Auth module. Don't need Lazy loading
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -43,6 +45,7 @@ import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    // To get the router navigation in redux tools
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
       routerState: RouterState.Minimal,

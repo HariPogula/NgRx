@@ -5,12 +5,12 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './modules/auth/services/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  {
-    path: 'auth',
-    loadChildren: () =>
-      import('./modules/auth/auth.module').then((a) => a.AuthModule),
-  },
+  // { path: '', component: HomeComponent },
+  // {
+  //   path: 'auth',
+  //   loadChildren: () =>
+  //     import('./modules/auth/auth.module').then((a) => a.AuthModule),
+  // },
 
   {
     path: 'course',
@@ -18,7 +18,7 @@ const routes: Routes = [
       import('./modules/courses/courses.module').then((c) => c.CoursesModule),
     canActivate: [AuthGuard],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
 @NgModule({

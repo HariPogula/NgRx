@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<AppState>,
+    private store: Store<AppState>, //Global State(Reducer )
     private authService: AuthService,
     private router: Router
   ) {}
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     const result = this.loginForm.value;
     console.log('Result is ' + JSON.stringify(result));
 
-    this.store.dispatch(login({ user: result }));
+    this.store.dispatch(login({ user: result.username }));
     this.router.navigate(['/course']);
     // this.authService.login(result).pipe(
     //   tap((u) => {

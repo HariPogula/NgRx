@@ -14,7 +14,7 @@ export interface AppState {}
 
 export const reducers: ActionReducerMap<AppState> = {
   // For Time Travelling debugger . Check in App.module.ts
-  router: routerReducer,
+  // router: routerReducer,
 };
 
 export function logger(reducer: ActionReducer<any>): ActionReducer<any> {
